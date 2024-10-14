@@ -15,13 +15,16 @@ function getID() {
 
 
 
-function assignID(machineName, newSeed) {
+ async function assignID(machineName, newSeed) {
+ return await new Promise((resolve, reject) =>{
      seed = newSeed; 
 
-    return getID().then((id) => {
+    resolve (getID().then((id) => {
         return `${machineName} : ${id}`; 
-    });
+    }));
+})
 }
+
 assignID("Oxygen filter", 1).then((value) => {
     console.log(value); 
 });
